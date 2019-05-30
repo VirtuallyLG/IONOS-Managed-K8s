@@ -1,7 +1,7 @@
 # Create a new virtual data center for managed k8s
 
 curl -s --request POST \
-     -H 'Authorization: Basic bGOTI=' \
+     -H 'Authorization: Bearer <apiKey>' \
      --header "Content-Type: application/json" \
      --data-binary '{
          "properties": {

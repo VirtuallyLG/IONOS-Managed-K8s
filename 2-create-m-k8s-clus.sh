@@ -1,7 +1,7 @@
 # Create a K8S Cluster
 
 curl -s --request POST \
-     -H 'Authorization: Basic bOTI=' \
+     -H 'Authorization: Bearer <apiKey>' \
      --header "Content-Type: application/json" \
      --data-binary '{
          "properties": {
