@@ -1,0 +1,32 @@
+Readme for IONOS Managed Kubernetes Service
+
+The managed k8s service uses APIs to create elements for hosting the k8s cluster
+initally you will need to generate an apiKey or base64 username and password as the authorisation method to communicate via API
+
+To generate base64 from your username and password use the below method to generate the base64 string 
+
+echo -n 'username@domain.tld:password' | base64
+
+this will return the base64 string eg:-y5nYWx.....h1YTgzOTI which can be used in the API calls
+
+if you would like to use an apiKey instead then pass the base64 string with the auth API to generate the API key
+
+curl --request GET \
+-H 'Authorization: Basic y5nYWx.....h1YTgzOTI' \
+https://api.ionos.com/auth/v1/tokens/generate/ 
+
+This will respond with the apiKey which can then be used using the 'Authorization: Bearer' type as the method of authorisation for the API calls
+
+the example below will display the valid apiKeys that have been created.
+
+curl --request GET \
+-H 'Authorization: Bearer eyJ0e....tYmJhMi1....iOiJpb25....Nsb3VkIiw' \
+https://api.ionos.com/auth/v1/tokens
+
+Creating the k8s cluster
+There are 4 high level steps to create the k8s cluster as classifed below. a number of scripts have been created which can be used one the authorization method has been defined.
+
+Create new virtual data center (optional)
+Create Kubernetes cluster
+Create node pool
+Get kubeconfig
