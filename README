@@ -1,7 +1,7 @@
 Readme for IONOS Managed Kubernetes Service
 
-The managed k8s service uses APIs to create elements for hosting the k8s cluster
-initally you will need to generate an apiKey or base64 username and password as the authorisation method to communicate via API
+The IONOS managed k8s service uses APIs to create master and worker nodes for hosting the k8s cluster, initally you will need
+to generate an apiKey or base64 username and password for the authorisation method to communicate via API
 
 To generate base64 from your username and password use the below method to generate the base64 string 
 
@@ -9,7 +9,7 @@ echo -n 'username@domain.tld:password' | base64
 
 this will return the base64 string eg:-y5nYWx.....h1YTgzOTI which can be used in the API calls
 
-if you would like to use an apiKey instead then pass the base64 string with the auth API to generate the API key
+if you would like to use an apiKey instead then pass the base64 string with the auth API url to generate the API key
 
 curl --request GET \
 -H 'Authorization: Basic y5nYWx.....h1YTgzOTI' \
@@ -30,3 +30,34 @@ Create new virtual data center (optional)
 Create Kubernetes cluster
 Create node pool
 Get kubeconfig
+
+Scripts for the inital deployment
+Note that the scripts will need to be modified with the apiKey or base64 authorisation method. you may need to change
+the path of the log files that are created as this scripts are using /root/managed-k8s/
+
+create-m-k8s-dc.sh - use this script to create a new vDC to host the k8s cluster, you can omit this step if you have a vDC already
+created but you will need to capture the vDC UUID for future use in the create nodepool script.
+
+create-m-k8s-clus.sh - use this script to create the cluster UUID which is needed for the creation of the nodepools.
+
+create-m-k8s-nodepool.sh - use this script to create the nodepool, this will create the Master and Worker Nodes for the k8s cluster
+you can modify the Nodecount key with the desired number of Worker Nodes.
+
+status.m-k8s-nodepool.sh - this script will check the status of the cluster, initially the cluster status will be BUSY during the initial
+provisioning stage and will change to AVAILABLE once the cluster is ready for operations.
+
+download-k8s-kubeconfig.sh - this script will download the kubeconfig file to the local machine so that it can be used for remote
+management of the k8s cluster. the download will only work once the nodepool is in an AVAILABLE state, note that there will also be 
+a kubeconfig.raw file downloaded which is the output of the JSON response from the API get call, this file can be removed as its not required.
+
+Scripts for the removal of the k8s cluster
+delete-m-k8s-nodepool.sh - use this script to delete the nodepools that have been defined during the deployment phase. note that
+any modification outside of the API deployment scripts may cause the delete script to fail which will then need to be manually modified
+within the API script
+
+delete-m-k8s-clus.sh - use this script to remove the cluster UUID definition from the vDC, make sure that the nodepool is deleted 
+before using this script
+
+delete-m-k8s-dc.sh - use this script to delete the vDC from your list of available vDCs, make sure that the delete nodepool and deleted
+cluster scripts are run before you run this script.
+
