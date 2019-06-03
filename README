@@ -24,7 +24,7 @@ curl --request GET \
 https://api.ionos.com/auth/v1/tokens
 
 Creating the k8s cluster
-There are 4 high level steps to create the k8s cluster as classifed below. a number of scripts have been created which can be used one the authorization method has been defined.
+There are 4 high level steps to create the k8s cluster as classifed below. a number of scripts have been created which can be used once the authorization method has been defined.
 
 Create new virtual data center (optional)
 Create Kubernetes cluster
