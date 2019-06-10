@@ -35,6 +35,8 @@ Scripts for the inital deployment
 Note that the scripts will need to be modified with the apiKey or base64 authorisation method. you may need to change
 the path of the log files that are created as this scripts are using /root/managed-k8s/
 
+pull the git repo with git clone https://github.com/virtuallylg/IONOS-Managed-K8s /root/managed-k8s
+
 create-m-k8s-dc.sh - use this script to create a new vDC to host the k8s cluster, you can omit this step if you have a vDC already
 created but you will need to capture the vDC UUID for future use in the create nodepool script.
 
