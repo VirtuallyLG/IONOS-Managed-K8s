@@ -11,7 +11,12 @@ curl -s --request POST \
 	"properties": {
     "name": "k8s-node-pool",
     "datacenterId": "'"$dcID"'",
-    "nodeCount": 2
+    "cpuFamily": "INTEL_XEON",
+    "coresCount": 2,
+    "ramSize": 6144,
+    "availabilityZone": "AUTO",
+    "storageType": "HDD",
+    "storageSize": 100 ,"nodeCount": 3
   }
 }' \
 "$url" > /root/managed-k8s/log/create-nodepool.log
