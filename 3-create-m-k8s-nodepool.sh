@@ -46,7 +46,7 @@ curl -s --request POST \
 #  "properties": {
 #    "name": "k8s-node-pool",
 #    "datacenterId": "ab6d4aea-bb90-45f7-88dd-e7c77883a9bd",
-#    "nodeCount": 2
+#    "nodeCount": 3
 #  }
 #}
 
