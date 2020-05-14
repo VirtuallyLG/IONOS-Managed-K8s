@@ -7,7 +7,7 @@ curl -s --request POST \
          "properties": {
              "name": "Managed Kubernetes-01",
              "description": "k8s data-center created via API",
-             "location": "de/fkb"
+             "location": "gb/lhr"
          }
      }' \
 https://api.ionos.com/cloudapi/v5/datacenters > /root/managed-k8s/log/createdc.log
