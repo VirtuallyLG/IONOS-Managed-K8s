@@ -5,7 +5,7 @@ curl -s --request GET \
      -H 'Authorization: Bearer <apiKey>' \
      --header "Content-Type: application/json" \
 "$url" > /root/managed-k8s/kubeconfig-raw
-cat /root/managed-k8s/kubeconfig-raw | jq '.properties.kubeconfig' | tr -d \" > /root/managed-k8s/kubeconfig
-sed -i 's/\\n/\n/g' /root/managed-k8s/kubeconfig 
+cat /root/managed-k8s/kubeconfig-raw | jq '.properties.kubeconfig' | tr -d \" > /root/managed-k8s/kubeconfig.yaml
+sed -i 's/\\n/\n/g' /root/managed-k8s/kubeconfig.yaml
 
 
