@@ -11,7 +11,7 @@ curl -s --request POST \
 	"properties": {
     "name": "k8s-node-pool",
     "datacenterId": "'"$dcID"'",
-    "cpuFamily": "INTEL_XEON",
+    "cpuFamily": "INTEL_SKYLAKE",
     "coresCount": 2,
     "ramSize": 6144,
     "availabilityZone": "AUTO",
